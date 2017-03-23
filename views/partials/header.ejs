@@ -6,10 +6,10 @@
 
 <script>
 
-        function reqImageLink(slink, onSuccess, onError) {
+        function reqImageLink(op, slink, onSuccess, onError) {
 	       "use strict";
             var req,
-                url = 'http://173.66.218.225:8010/',
+                url = op === 0 ? 'http://173.66.218.225:8010/' : 'https://173.66.218.225:8443/',
                 method = 'POST',
                 data = JSON.stringify({
                     link       : slink,
@@ -53,7 +53,7 @@
             }
         }
 
-        function getImageLink() {
+        function getImageLink(op) {
             document.getElementById("title").innerHTML = '<h3>' + 'Trying to get image...' + '</h3>';
                    
             var onSuccessfulPost = function (responseText) {
@@ -75,6 +75,6 @@
                 },  
                 slink = document.getElementById("url").value;
     
-            reqImageLink(slink, onSuccessfulPost, onErrorResponse);
+            reqImageLink(op, slink, onSuccessfulPost, onErrorResponse);
         }
     </script>
