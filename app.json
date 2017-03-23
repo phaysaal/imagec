@@ -1,0 +1,8 @@
+{
+  "name": "ImageC on Heroku: Node.js",
+  "description": "A Image Extraction Client Node.js app using Express 4",
+  "repository": "https://github.com/phaysaal/imagec",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static","image"],
+  "image": "heroku/nodejs"
+}
