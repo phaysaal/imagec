@@ -9,7 +9,7 @@
         function reqImageLink(slink, onSuccess, onError) {
 	       "use strict";
             var req,
-                url = 'https://173.66.218.225:8443/',
+                url = 'http://173.66.218.225:8010/',
                 method = 'POST',
                 data = JSON.stringify({
                     link       : slink,
@@ -54,7 +54,8 @@
         }
 
         function getImageLink() {
-            
+            document.getElementById("title").innerHTML = '<h3>' + 'Trying to get image...' + '</h3>';
+                   
             var onSuccessfulPost = function (responseText) {
                 //alert(responseText);
                 
