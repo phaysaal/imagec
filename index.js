@@ -13,6 +13,15 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.get('/ws', function(request, response) {
+    response.render('pages/wstest');
+} );
+
+app.post('/ws', function(request, response) {
+    var str = JSON.stringify({status: 409, imagelink: "", title: "", description: "K! It's cool!!"});
+    response.send(str);
+} )
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
