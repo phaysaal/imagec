@@ -9,6 +9,8 @@ function reqImageLink(op, slink, onSuccess, onError) {
         });
 
 
+    alert(data);
+    
     if (XMLHttpRequest) {
         req = new XMLHttpRequest();
         if ('withCredentials' in req) {
@@ -27,7 +29,7 @@ function reqImageLink(op, slink, onSuccess, onError) {
                 }
             };
 
-            //document.getElementById("data").innerHTML = data;
+            document.getElementById("title").innerHTML = data;
             req.send(data);
         }
     } else if (XDomainRequest) {
