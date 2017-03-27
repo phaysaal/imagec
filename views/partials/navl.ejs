@@ -1,10 +1,40 @@
       <div>
         <div>
           <div>
+              <script>
+              function getImageLinkLocal1() {
+    "use strict";
+    document.getElementById("ltitle").innerHTML = '<h3>' + 'Trying to get image...' + '</h3>';
+
+    alert("A");
+    var onSuccessfulPost = function (responseText) {
+            //alert(responseText);
+
+            var res = JSON.parse(responseText);
+            //alert(res.status);
+
+            if (res.status === 200) {
+                document.getElementById("limagePreview").innerHTML = '<img src=' + res.imagelink + '></img><br>' + res.imagelink;
+                document.getElementById("ltitle").innerHTML = '<h3>' + res.title + '</h3>';
+                document.getElementById("ldescription").innerHTML = res.description;
+            } else {
+                document.getElementById("limagePreview").innerHTML = res.status + ": " + res.imagelink;
+            }
+        },
+        onErrorResponse = function (message) {
+            document.getElementById("limagePreview").innerHTML = message;
+        },
+        slink = document.getElementById("lurl").value;
+
+    alert(slink);
+    //reqImageLinkLocal(slink, onSuccessfulPost, onErrorResponse);
+    alert("B");
+}
+              </script>
             <label for="lurl">Amazon URL (L): </label>
             <input id="lurl" name="url" value="" type="text" size="100">
               
-              <button type="button" onclick="getImageLinkLocal();">Get Image</button>
+              <button type="button" onclick="getImageLinkLocal1();">Get Image</button>
           </div>
             <div id="ltitle">
             </div>
