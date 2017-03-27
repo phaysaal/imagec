@@ -29,7 +29,7 @@ function reqImageLinkLocal(slink, onSuccess, onError) {
                 }
             };
 
-            document.getElementById("title").innerHTML = data;
+            document.getElementById("ltitle").innerHTML = data;
             req.send(data);
         }
     } else if (XDomainRequest) {
@@ -47,7 +47,7 @@ function reqImageLinkLocal(slink, onSuccess, onError) {
 
 function getImageLinkLocal() {
     "use strict";
-    document.getElementById("title").innerHTML = '<h3>' + 'Trying to get image...' + '</h3>';
+    document.getElementById("ltitle").innerHTML = '<h3>' + 'Trying to get image...' + '</h3>';
 
     alert("A");
     var onSuccessfulPost = function (responseText) {
@@ -57,17 +57,17 @@ function getImageLinkLocal() {
             //alert(res.status);
 
             if (res.status === 200) {
-                document.getElementById("imagePreview").innerHTML = '<img src=' + res.imagelink + '></img><br>' + res.imagelink;
-                document.getElementById("title").innerHTML = '<h3>' + res.title + '</h3>';
-                document.getElementById("description").innerHTML = res.description;
+                document.getElementById("limagePreview").innerHTML = '<img src=' + res.imagelink + '></img><br>' + res.imagelink;
+                document.getElementById("ltitle").innerHTML = '<h3>' + res.title + '</h3>';
+                document.getElementById("ldescription").innerHTML = res.description;
             } else {
-                document.getElementById("imagePreview").innerHTML = res.status + ": " + res.imagelink;
+                document.getElementById("limagePreview").innerHTML = res.status + ": " + res.imagelink;
             }
         },
         onErrorResponse = function (message) {
-            document.getElementById("imagePreview").innerHTML = message;
+            document.getElementById("limagePreview").innerHTML = message;
         },
-        slink = document.getElementById("url").value;
+        slink = document.getElementById("lurl").value;
 
     alert(slink);
     reqImageLinkLocal(slink, onSuccessfulPost, onErrorResponse);
