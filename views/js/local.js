@@ -68,5 +68,6 @@ function getImageLink(op) {
         },
         slink = document.getElementById("url").value;
 
+    alert(slink);
     reqImageLink(op, slink, onSuccessfulPost, onErrorResponse);
 }
