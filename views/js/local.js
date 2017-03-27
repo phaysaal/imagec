@@ -1,4 +1,4 @@
-function reqImageLink(op, slink, onSuccess, onError) {
+function reqImageLinkLocal(op, slink, onSuccess, onError) {
     "use strict";
     var req,
         url = '/ws',
@@ -45,7 +45,7 @@ function reqImageLink(op, slink, onSuccess, onError) {
     }
 }
 
-function getImageLink(op) {
+function getImageLinkLocal(op) {
     "use strict";
     document.getElementById("title").innerHTML = '<h3>' + 'Trying to get image...' + '</h3>';
 
@@ -69,5 +69,5 @@ function getImageLink(op) {
         slink = document.getElementById("url").value;
 
     alert(slink);
-    reqImageLink(op, slink, onSuccessfulPost, onErrorResponse);
+    reqImageLinkLocal(op, slink, onSuccessfulPost, onErrorResponse);
 }
