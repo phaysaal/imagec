@@ -1,15 +1,22 @@
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser');
 
 //***************
+/* Proxy Server for Unclehub Image Extraction
+ * ------------------------------------------
+ * Author: Mahmudul Faisal Al Ameen
+ * Copyright: Unclehub
+ */
 
+var bodyParser = require('body-parser');
+var WebSocketClient = require('websocket').client;
+var client = new WebSocketClient();
 
 var gres = null;
 var gdata = null;
 
-var WebSocketClient = require('websocket').client;
-var client = new WebSocketClient();
+var domain = '';
+var port = 8010;
 
 client.on('connectFailed', function(error) {
     console.log('Connect Error: ' + error.toString());
@@ -32,8 +39,7 @@ client.on('connect', function (connection) {
     function sendData() {
         if (connection.connected) {
             var str = JSON.stringify({link: gdata.link, agent: gdata.agent});
-            connection.sendUTF(str);
-            //setTimeout(sendNumber, 6000);        
+            connection.sendUTF(str);        
         }
     }
     if (gdata !== null && gres !== null) {
@@ -41,8 +47,15 @@ client.on('connect', function (connection) {
     }
 });
 
+function proxy (request, response) {
+    gres = response;
+    gdata = request.body;
+//    client.connect('ws://182.55.206.183:8010/', 'image-extraction');
+    client.connect('ws://' + domain + ':' + port + '/', 'image-extraction');   
+}
 
 //***************
+
 app.use(bodyParser.json());
 app.set('port', (process.env.PORT || 5000));
 
@@ -61,10 +74,7 @@ app.get('/ws', function (request, response) {
 });
 
 app.post('/ws', function (request, response) {
-    gres = response;
-    gdata = request.body;
-//    gres.send("");
-    client.connect('ws://182.55.206.183:8010/', 'image-extraction');
+    proxy(request, response);
 });
 
 app.listen(app.get('port'), function () {
