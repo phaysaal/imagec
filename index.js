@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 
 //***************
 
+
 var gres = null;
 var gdata = null;
 
@@ -62,7 +63,7 @@ app.post('/ws', function(request, response) {
     gres = response;
     gdata = request.body;
     client.connect('ws://182.55.206.183:8010/', 'image-extraction');
-} )
+} );
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
