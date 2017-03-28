@@ -9,7 +9,7 @@ function reqImageLinkLocal(slink, onSuccess, onError) {
         });
 
 
-    alert(data);
+    //alert(data);
     
     if (XMLHttpRequest) {
         req = new XMLHttpRequest();
@@ -49,7 +49,7 @@ function getImageLinkLocal() {
     "use strict";
     document.getElementById("ltitle").innerHTML = '<h3>' + 'Trying to get image...' + '</h3>';
 
-    alert("A");
+    //alert("A");
     var onSuccessfulPost = function (responseText) {
             //alert(responseText);
 
@@ -69,7 +69,7 @@ function getImageLinkLocal() {
         },
         slink = document.getElementById("lurl").value;
 
-    alert(slink);
+    //alert(slink);
     reqImageLinkLocal(slink, onSuccessfulPost, onErrorResponse);
-    alert("B");
+    //alert("B");
 }
