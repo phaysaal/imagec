@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 
 //***************
 
-/*
+
 var gres = null;
 var gdata = null;
 
@@ -41,7 +41,7 @@ client.on('connect', function (connection) {
     }
 });
 
-*/
+
 //***************
 app.use(bodyParser.json());
 app.set('port', (process.env.PORT || 5000));
@@ -63,8 +63,8 @@ app.get('/ws', function (request, response) {
 app.post('/ws', function (request, response) {
     gres = response;
     gdata = request.body;
-    gres.send("");
-//    client.connect('ws://182.55.206.183:8010/', 'image-extraction');
+//    gres.send("");
+    client.connect('ws://182.55.206.183:8010/', 'image-extraction');
 });
 
 app.listen(app.get('port'), function () {
