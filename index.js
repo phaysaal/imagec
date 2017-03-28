@@ -15,7 +15,7 @@ var client = new WebSocketClient();
 var gres = null;
 var gdata = null;
 
-var domain = '';
+var domain = '173.66.218.225';
 var port = 8010;
 
 client.on('connectFailed', function(error) {
